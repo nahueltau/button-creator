@@ -1,10 +1,31 @@
 //CONFIG
 let button = document.querySelector(".view-container button");
+let container = document.querySelector(".view-container");
 const updateCode = ()=>{
     showHTMLcode();
     showCSScode();
 }
-window.addEventListener("load",updateCode);
+const mainStylesContainer = document.querySelector("#main");
+const hoverStylesContainer = document.querySelector("#hover");
+class Styles {
+    constructor(){
+        this.borderRadius= null;
+        this.borderWidth= null;
+        this.borderColor= null;
+        this.borderStyle= null;
+        this.paddingTop=null;
+        this.paddingBottom=null;
+        this.paddingLeft=null;
+        this.paddingRight=null;
+        this.backgorundColor=null;
+        this.color=null;
+        this.fontSize=null;
+        this.textTransform=null;
+        this.boxShadow=null;
+    }  
+}
+let MainStyles = new Styles;
+let HoverStyles = new Styles;
 //HTML CODE SHOW
 const showHTMLcode = ()=>{
     let htmlViewer = document.querySelector(".html-code-container");
@@ -25,93 +46,252 @@ const showHTMLcode = ()=>{
 const showCSScode = ()=>{
     let cssViewer = document.querySelector(".css-code-container");
 
-    let viewCode = button.style.cssText;
-    let viewCodewithBreaks = viewCode.replace(/;/g,";<br>");
+    //let viewCode = button.style.cssText;
+    let viewCode = mainStylesContainer.innerText;
+    let viewCodewithBreaks = viewCode.replace(/;/g,";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").replace(/{/g,"{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").replace(/:/g,":&nbsp;");
 
     cssViewer.innerHTML = viewCodewithBreaks;
 }   
 
-//BORDER RADIUS
-let borderRadius = document.querySelector("#border-radius-config");
-let updateBorderRadius = ()=>{
-    button.style.borderRadius = `${borderRadius.value}px`;
-    if(borderRadius.value==0){
-        button.style.borderRadius = "";
+const DOMInputs = {
+containerBackground: document.querySelector("#background-container-config"),
+textContent: document.querySelector("#text-content-config"),
+borderRadius: document.querySelector("#border-radius-config"),
+borderWidth: document.querySelector("#border-width-config"),
+borderColor: document.querySelector("#border-color-config"),
+borderStyle: document.querySelector("#border-style-config"),
+paddingX: document.querySelector("#padding-x-config"),
+paddingY: document.querySelector("#padding-y-config"),
+backgroundColor: document.querySelector("#background-color-config"),
+textColor: document.querySelector("#text-color-config"),
+fontSize: document.querySelector("#font-size-config"),
+textTransform: document.querySelector("#text-transform-config"),
+boxShadowX: document.querySelector("#shadow-x-config"),
+boxShadowY: document.querySelector("#shadow-y-config"),
+boxShadowBlur: document.querySelector("#shadow-blur-config"),
+boxShadowColor: document.querySelector("#shadow-color-config"),
+}
+
+let UpdateMethods = {
+    textContent: ()=>{
+        button.innerText =  DOMInputs.textContent.value;
+        
+    },
+    containerBackground: ()=>{
+        container.style.backgroundColor = DOMInputs.containerBackground.value;
+        
+    },
+    borderRadius: function(){
+        MainStyles.borderRadius = `${DOMInputs.borderRadius.value}px`;
+        if(DOMInputs.borderRadius.value==0){
+            button.style.borderRadius = "";
+        }
+        
+    },
+    borderWidth: ()=>{
+        MainStyles.borderWidth = `${DOMInputs.borderWidth.value}px`;
+        if(DOMInputs.borderWidth.value==0){
+            MainStyles.style.borderWidth = `0px`;
+        }
+     
+    },
+    borderStyle: ()=>{
+        MainStyles.borderStyle = `${DOMInputs.borderStyle.value}`;
+      
+    },
+    borderColor: ()=>{
+        MainStyles.borderColor = DOMInputs.borderColor.value;
+        
+    },
+    paddingX: ()=>{
+        MainStyles.paddingRight = `${DOMInputs.paddingX.value}px`;
+        MainStyles.paddingLeft = `${DOMInputs.paddingX.value}px`;
+        if(DOMInputs.paddingX.value==0){
+            MainStyles.paddingRight = "";
+            MainStyles.paddingLeft = "";
+        }
+       
+    },
+    paddingY: ()=>{
+        MainStyles.paddingTop = `${DOMInputs.paddingY.value}px`;
+        MainStyles.paddingBottom = `${DOMInputs.paddingY.value}px`;
+        if(DOMInputs.paddingX.value==0){
+            MainStyles.paddingTop = "";
+            MainStyles.paddingBottom = "";
+        }
+        
+    },
+    backgroundColor: ()=>{
+        if(DOMInputs.backgroundColor.getAttribute("data-custom")==="true"){
+            HoverStyles.backgroundColor = DOMInputs.backgroundColor.value; 
+        }else{
+           MainStyles.backgroundColor = DOMInputs.backgroundColor.value; 
+        }
+        
+        
+    },
+    textColor: ()=>{
+        MainStyles.color = DOMInputs.textColor.value;
+      
+    },
+    fontSize: ()=>{
+        MainStyles.fontSize = `${DOMInputs.fontSize.value}px`;
+       
+    },
+    textTransform: ()=>{
+        MainStyles.textTransform = `${DOMInputs.textTransform.value}`;
+        
+    },
+    boxShadowX: ()=>{
+        MainStyles.boxShadow = `${DOMInputs.boxShadowX.value}px ${DOMInputs.boxShadowY.value}px ${DOMInputs.boxShadowBlur.value}px ${DOMInputs.boxShadowColor.value}`;
+        
+    },
+    boxShadowY: ()=>{
+        MainStyles.boxShadow = `${DOMInputs.boxShadowX.value}px ${DOMInputs.boxShadowY.value}px ${DOMInputs.boxShadowBlur.value}px ${DOMInputs.boxShadowColor.value}`;
+        
+    },
+    boxShadowBlur: ()=>{
+        MainStyles.boxShadow = `${DOMInputs.boxShadowX.value}px ${DOMInputs.boxShadowY.value}px ${DOMInputs.boxShadowBlur.value}px ${DOMInputs.boxShadowColor.value}`;
+        
+    },
+    boxShadowColor: ()=>{
+        MainStyles.boxShadow = `${DOMInputs.boxShadowX.value}px ${DOMInputs.boxShadowY.value}px ${DOMInputs.boxShadowBlur.value}px ${DOMInputs.boxShadowColor.value}`;
+        
+    }
+}
+/* let UpdateMethods = {
+    textContent: ()=>{
+        button.innerText =  DOMInputs.textContent.value;
+        
+    },
+    containerBackground: ()=>{
+        container.style.backgroundColor = DOMInputs.containerBackground.value;
+        
+    },
+    borderRadius: function(){
+        button.style.borderRadius = `${DOMInputs.borderRadius.value}px`;
+        if(DOMInputs.borderRadius.value==0){
+            button.style.borderRadius = "";
+        }
+        
+    },
+    borderWidth: ()=>{
+        button.style.borderWidth = `${DOMInputs.borderWidth.value}px`;
+        if(DOMInputs.borderWidth.value==0){
+            button.style.borderWidth = `0px`;
+        }
+     
+    },
+    borderStyle: ()=>{
+        button.style.borderStyle = `${DOMInputs.borderStyle.value}`;
+      
+    },
+    borderColor: ()=>{
+        button.style.borderColor = DOMInputs.borderColor.value;
+        
+    },
+    paddingX: ()=>{
+        button.style.paddingRight = `${DOMInputs.paddingX.value}px`;
+        button.style.paddingLeft = `${DOMInputs.paddingX.value}px`;
+        if(DOMInputs.paddingX.value==0){
+            button.style.paddingRight = "";
+            button.style.paddingLeft = "";
+        }
+       
+    },
+    paddingY: ()=>{
+        button.style.paddingTop = `${DOMInputs.paddingY.value}px`;
+        button.style.paddingBottom = `${DOMInputs.paddingY.value}px`;
+        if(DOMInputs.paddingX.value==0){
+            button.style.paddingTop = "";
+            button.style.paddingBottom = "";
+        }
+        
+    },
+    backgroundColor: ()=>{
+        button.style.backgroundColor = DOMInputs.backgroundColor.value;
+        
+    },
+    textColor: ()=>{
+        button.style.color = DOMInputs.textColor.value;
+      
+    },
+    fontSize: ()=>{
+        button.style.fontSize = `${DOMInputs.fontSize.value}px`;
+       
+    },
+    textTransform: ()=>{
+        button.style.textTransform = `${DOMInputs.textTransform.value}`;
+        
+    },
+    boxShadowX: ()=>{
+        button.style.boxShadow = `${DOMInputs.boxShadowX.value}px ${DOMInputs.boxShadowY.value}px ${DOMInputs.boxShadowBlur.value}px ${DOMInputs.boxShadowColor.value}`;
+        
+    },
+    boxShadowY: ()=>{
+        button.style.boxShadow = `${DOMInputs.boxShadowX.value}px ${DOMInputs.boxShadowY.value}px ${DOMInputs.boxShadowBlur.value}px ${DOMInputs.boxShadowColor.value}`;
+        
+    },
+    boxShadowBlur: ()=>{
+        button.style.boxShadow = `${DOMInputs.boxShadowX.value}px ${DOMInputs.boxShadowY.value}px ${DOMInputs.boxShadowBlur.value}px ${DOMInputs.boxShadowColor.value}`;
+        
+    },
+    boxShadowColor: ()=>{
+        button.style.boxShadow = `${DOMInputs.boxShadowX.value}px ${DOMInputs.boxShadowY.value}px ${DOMInputs.boxShadowBlur.value}px ${DOMInputs.boxShadowColor.value}`;
+        
+    }
+} */
+
+let updateProxyHandler = {
+    get: function(obj,prop){
+        obj[prop].call();
+        updateCode();
+        injectMainStyles();
+        injectHoverStyles();
+    }
+
+};
+let UpdateMethodsProxy = new Proxy(UpdateMethods,updateProxyHandler);
+
+window.addEventListener("load",()=>{
+
+    for(let element in UpdateMethods){
+        UpdateMethodsProxy[element];
     }
     updateCode();
+    injectMainStyles();
+});
+for(let element in DOMInputs){
+    
+    DOMInputs[element].addEventListener("input",()=>UpdateMethodsProxy[element]);
 }
-borderRadius.addEventListener("change",updateBorderRadius);
-
-
-//BORDER WIDTH
-let borderWidth = document.querySelector("#border-width-config");
-let updateBorderWidth = ()=>{
-    button.style.borderWidth = `${borderWidth.value}px`;
-    if(borderWidth.value==0){
-        button.style.borderWidth = `0px`;
+const injectMainStyles = ()=>{
+    let style = "";
+    for(rule in MainStyles){
+        let _rule = rule;
+       if(rule.match(/[A-Z]/g)){
+           _rule = rule.replace(/[A-Z]/g, "-"+rule.match(/[A-Z]/g)[0].toLowerCase());
+       }
+       if(MainStyles[rule]!==null){
+         style+=_rule+":"+MainStyles[rule]+";";  
+       }
+       
     }
-    updateCode();
+   
+    mainStylesContainer.innerText = `.button{${style}}`;
 }
-borderWidth.addEventListener("change",updateBorderWidth);
-
-
-//BORDER STYLE
-let borderStyle = document.querySelector("#border-style-config");
-let updateBorderStyle = ()=>{
-    button.style.borderStyle = `${borderStyle.value}`;
-    updateCode();
-}
-borderStyle.addEventListener("change",updateBorderStyle);
-
-//PADDING X
-let paddingX = document.querySelector("#padding-x-config");
-let updatePaddingX = ()=>{
-    button.style.paddingRight = `${paddingX.value}px`;
-    button.style.paddingLeft = `${paddingX.value}px`;
-    if(paddingX.value==0){
-        button.style.paddingRight = "";
-        button.style.paddingLeft = "";
+const injectHoverStyles = ()=>{
+    let style = "";
+    for(rule in HoverStyles){
+        let _rule = rule;
+       if(rule.match(/[A-Z]/g)){
+           _rule = rule.replace(/[A-Z]/g, "-"+rule.match(/[A-Z]/g)[0].toLowerCase());
+       }
+       if(HoverStyles[rule]!==null){
+         style+=_rule+":"+HoverStyles[rule]+";";  
+       }
+       
     }
-    updateCode();
+   
+    hoverStylesContainer.innerText = `.button:hover{${style}}`;
 }
-paddingX.addEventListener("change",updatePaddingX);
-
-
-//PADDING Y
-let paddingY = document.querySelector("#padding-y-config");
-let updatePaddingY = ()=>{
-    button.style.paddingTop = `${paddingY.value}px`;
-    button.style.paddingBottom = `${paddingY.value}px`;
-    if(paddingX.value==0){
-        button.style.paddingTop = "";
-        button.style.paddingBottom = "";
-    }
-    updateCode();
-}
-paddingY.addEventListener("change",updatePaddingY);
-
-
-//BACKGROUND COLOR
-let backgroundColor = document.querySelector("#background-color-config");
-let updateBackgroundColor = ()=>{
-    button.style.backgroundColor = backgroundColor.value;
-    updateCode();
-}
-backgroundColor.addEventListener("change",updateBackgroundColor);
-
-
-//TEXT COLOR
-let textColor = document.querySelector("#text-color-config");
-let updateTextColor = ()=>{
-    button.style.color = textColor.value;
-    updateCode();
-}
-textColor.addEventListener("change",updateTextColor);
-
-//TEXT SIZE
-let fontSize = document.querySelector("#font-size-config");
-let updateFontSize = ()=>{
-    button.style.fontSize = `${fontSize.value}px`;
-    updateCode();
-}
-fontSize.addEventListener("change",updateFontSize);

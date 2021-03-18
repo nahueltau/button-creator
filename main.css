@@ -3,7 +3,7 @@ body{
     font-family: sans-serif;
 }
 .app-container{
-    background-color: antiquewhite;
+    background-color: rgb(246, 240, 255);
     width: 100%;
     height: 100vh;
     display: grid;
@@ -18,9 +18,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
 }
-.html-code-container,.css-code-wrapper{
+.html-code-wrapper,.css-code-wrapper{
     background-color: rgb(62, 63, 80);
     color: white;
     font-weight: 500;
@@ -28,13 +29,35 @@ body{
     padding: 2rem;
     box-sizing: border-box;
     border-right: 2px solid black;
+    height: 50vh;
+    line-height: 1.5rem;
+    overflow-y: auto;
+}
+.css-code-container{
+    padding-left: 1rem;
+}
+.config-container{
+    height: 50vh;
+    overflow-y: auto;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+.config-container p{
+   font-weight: bold;
+   
 }
 .config-container div{
-    padding: .5rem .5rem;
+    width: 40%;
+    padding: .2rem 2rem;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 .config-container label{
     padding-right: .5rem;
 }
+.config-container label span{
+    color: #ddd;
+}
+
