@@ -1,3 +1,10 @@
+//CONFIG
+let button = document.querySelector(".view-container button");
+const updateCode = ()=>{
+    showHTMLcode();
+    showCSScode();
+}
+window.addEventListener("load",updateCode);
 //HTML CODE SHOW
 const showHTMLcode = ()=>{
     let htmlViewer = document.querySelector(".html-code-container");
@@ -14,40 +21,50 @@ const showHTMLcode = ()=>{
 
     htmlViewer.innerHTML = viewCodeEscaped;
 }
-window.addEventListener("load",showHTMLcode);
-
 //CSS SHOW CODE
 const showCSScode = ()=>{
-    let viewCode =  document.querySelector(".view-container").innerHTML;
     let cssViewer = document.querySelector(".css-code-container");
 
-
-    let styleStartIndex = viewCode.search(/style="/i)+7;
-    let styleEndIndex = viewCode.search(/">/i);
-    let viewCodeTrimmed = viewCode.slice(styleStartIndex,styleEndIndex)
-
-    let viewCodewithBreaks = viewCodeTrimmed.replace(/;/g,";<br>");
+    let viewCode = button.style.cssText;
+    let viewCodewithBreaks = viewCode.replace(/;/g,";<br>");
 
     cssViewer.innerHTML = viewCodewithBreaks;
 }   
 
-//CONFIG
-let button = document.querySelector(".view-container button");
-
 //BORDER RADIUS
-let borderRadius = document.querySelector(".border-radius-config");
+let borderRadius = document.querySelector("#border-radius-config");
 let updateBorderRadius = ()=>{
     button.style.borderRadius = `${borderRadius.value}px`;
     if(borderRadius.value==0){
         button.style.borderRadius = "";
     }
-    showHTMLcode();
-    showCSScode();
+    updateCode();
 }
 borderRadius.addEventListener("change",updateBorderRadius);
 
+
+//BORDER WIDTH
+let borderWidth = document.querySelector("#border-width-config");
+let updateBorderWidth = ()=>{
+    button.style.borderWidth = `${borderWidth.value}px`;
+    if(borderWidth.value==0){
+        button.style.borderWidth = `0px`;
+    }
+    updateCode();
+}
+borderWidth.addEventListener("change",updateBorderWidth);
+
+
+//BORDER STYLE
+let borderStyle = document.querySelector("#border-style-config");
+let updateBorderStyle = ()=>{
+    button.style.borderStyle = `${borderStyle.value}`;
+    updateCode();
+}
+borderStyle.addEventListener("change",updateBorderStyle);
+
 //PADDING X
-let paddingX = document.querySelector(".padding-x-config");
+let paddingX = document.querySelector("#padding-x-config");
 let updatePaddingX = ()=>{
     button.style.paddingRight = `${paddingX.value}px`;
     button.style.paddingLeft = `${paddingX.value}px`;
@@ -55,7 +72,46 @@ let updatePaddingX = ()=>{
         button.style.paddingRight = "";
         button.style.paddingLeft = "";
     }
-    showHTMLcode();
-    showCSScode();
+    updateCode();
 }
 paddingX.addEventListener("change",updatePaddingX);
+
+
+//PADDING Y
+let paddingY = document.querySelector("#padding-y-config");
+let updatePaddingY = ()=>{
+    button.style.paddingTop = `${paddingY.value}px`;
+    button.style.paddingBottom = `${paddingY.value}px`;
+    if(paddingX.value==0){
+        button.style.paddingTop = "";
+        button.style.paddingBottom = "";
+    }
+    updateCode();
+}
+paddingY.addEventListener("change",updatePaddingY);
+
+
+//BACKGROUND COLOR
+let backgroundColor = document.querySelector("#background-color-config");
+let updateBackgroundColor = ()=>{
+    button.style.backgroundColor = backgroundColor.value;
+    updateCode();
+}
+backgroundColor.addEventListener("change",updateBackgroundColor);
+
+
+//TEXT COLOR
+let textColor = document.querySelector("#text-color-config");
+let updateTextColor = ()=>{
+    button.style.color = textColor.value;
+    updateCode();
+}
+textColor.addEventListener("change",updateTextColor);
+
+//TEXT SIZE
+let fontSize = document.querySelector("#font-size-config");
+let updateFontSize = ()=>{
+    button.style.fontSize = `${fontSize.value}px`;
+    updateCode();
+}
+fontSize.addEventListener("change",updateFontSize);

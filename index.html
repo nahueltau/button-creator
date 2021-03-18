@@ -12,21 +12,67 @@
     <div class="app-container">
         <div class="row">
             <div class="view-container">
-                <button>Botón</button>
+                <button class="button" style="cursor:pointer;border-width: 0px;border-style: solid;">Botón</button>
             </div>
             <div class="config-container">
-                <div class="border-radius-config-container">
-                    <input type="number" min="0" value="0" class="border-radius-config">
-                    <input type="number" min="0" value="0" class="padding-x-config">
+                
+                    <div>
+                        <label for="background-color-config">Background Color</label>
+                        <input type="color" id="background-color-config" value="#000000">
+                    </div>
+                    <div>
+                        <label for="border-radius-config">Border Radius</label>
+                        <input type="range" min="0" value="0" max="500" id="border-radius-config">
+                    </div>
+                    <div>
+                        <label for="border-width-config">Border Width</label>
+                        <input type="range" min="0" value="0" max="50" id="border-width-config">
+                    </div>
+                    <div>
+                        <label for="border-style-config">Border Style</label>
+                        <select name="" id="border-style-config">
+                            <option value="solid">Solid</option>
+                            <option value="inset">Inset</option>
+                            <option value="outset">Outset</option>
+                            <option value="groove">Groove</option>
+                            <option value="ridge">Ridge</option>
+                            <option value="double">Double</option>
+                            <option value="dashed">Dashed</option>
+                            <option value="dotted">Dotted</option>
+                            <option value="hidden">Hidden</option>
+                            <option value="none">None</option>
+                        </select>
+                        
+                    </div>
+                    <div>
+                        <label for="border-x-config">Padding X Direction</label>
+                        <input type="range" min="0" value="0" max="500" id="padding-x-config">
+                    </div>
+                    <div>
+                        <label for="border-y-config">Padding Y Direction</label>
+                        <input type="range" min="0" value="0" max="500" id="padding-y-config">
+                    </div>
+                    <div>
+                        <label for="text-color-config">Text Color</label>
+                        <input type="color" id="text-color-config" value="#000000">
+                    </div>
+                    <div>
+                        <label for="font-size-config">Font Size</label>
+                        <input type="range" min="12" value="16" max="100" id="font-size-config">
+                    </div>
                 </div>
-            </div>
+            
         </div>
         <div class="row">   
         <div class="html-code-container">
           
         </div>
-        <div class="css-code-container">
+        <div class="css-code-wrapper">
+            <p>.button{</p>
+            <div class="css-code-container">
 
+            </div>
+            <p>}</p>
         </div>
         </div>
     </div>

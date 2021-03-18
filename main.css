@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: sans-serif;
 }
 .app-container{
     background-color: antiquewhite;
@@ -18,4 +19,22 @@ body{
     justify-content: center;
     align-items: center;
 
+}
+.html-code-container,.css-code-wrapper{
+    background-color: rgb(62, 63, 80);
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 2rem;
+    box-sizing: border-box;
+    border-right: 2px solid black;
+}
+.config-container div{
+    padding: .5rem .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.config-container label{
+    padding-right: .5rem;
 }
