@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Creator</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" type="module" defer></script>
+    <style id="main"></style>
+    <style id="hover"></style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="row">
+            <div class="view-container">
+                <button class="button" style="cursor:pointer;transition: 1s;">Botón</button>
+            </div>
+            <div class="config-container">
+                    <p>General</p>
+                    
+                     <div id="background-container" data-title="Container Background!" data-value="#0a5c44" class="color-selector"></div>
+                    <p>Button</p>
+                    <div>
+                        <label for="text-content-config">Text</label>
+                        <input type="text" id="text-content-config" value="botón">
+                         </div>
+                    <div id="background-color" data-title="Background!" data-value="#8a0099" class="color-selector"></div>
+                    <p>Border</p>
+                    <div id="border-radius" data-title="Radius" data-value="35" data-min="0" data-max="200" class="range-selector"></div>
+                    <div id="border-width" data-title="Width" data-value="8" data-min="0" data-max="20" class="range-selector"></div>
+                    <div id="border-color" data-title="Color!" data-value="#fffff3" class="color-selector"></div>
+                    <div>
+                        <label for="border-style-config">Style</label>
+                        <select name="" id="border-style-config" size="1">
+                            <option value="solid">Solid</option>
+                            <option value="inset">Inset</option>
+                            <option value="outset">Outset</option>
+                            <option value="groove">Groove</option>
+                            <option value="ridge">Ridge</option>
+                            <option value="double">Double</option>
+                            <option value="dashed" selected="selected">Dashed</option>
+                            <option value="dotted">Dotted</option>
+                            <option value="hidden">Hidden</option>
+                            <option value="none">None</option>
+                        </select>
+                        
+                    </div>
+                    <p>Padding</p>
+                    
+                    <div id="padding-x" data-title="X Direction" data-value="100" data-min="0" data-max="200" class="range-selector"></div>
+                    <div id="padding-y" data-title="Y Direction" data-value="31" data-min="0" data-max="200" class="range-selector"></div>
+                    <p>Text</p>
+                    <div id="text-color" data-title="Color!" data-value="#ffffff" class="color-selector"></div>
+                    <div id="font-size" data-title="Size" data-value="40" data-min="12" data-max="72" class="range-selector"></div><div>
+                        <label for="text-transform-config">Transform</label>
+                        <select name="" id="text-transform-config">
+                            <option value="none">None</option>
+                            <option value="uppercase" selected="selected">Uppercase</option>
+                            <option value="lowercase">Lowercase</option>
+                            <option value="capitalize">Capitalize</option>
+                            <option value="initial">Initial</option>
+                            <option value="inherit">Inherit</option>
+                        </select>
+                        
+                    </div>
+                    <p>Shadow</p>
+
+                    <div id="shadow-x" data-title="X" data-value="10" data-min="-20" data-max="20" class="range-selector"></div>
+                    <div id="shadow-y" data-title="Y" data-value="10" data-min="-20" data-max="20" class="range-selector"></div>
+                    <div id="shadow-blur" data-title="Blur" data-value="2" data-min="0" data-max="40" class="range-selector"></div>
+                    <div id="shadow-color" data-title="Color!" data-value="#333333" class="color-selector"></div>
+                    
+
+                </div>
+            
+        </div>
+        <div class="row">
+        <div class="html-code-wrapper">
+            <h2>HTML</h2>
+            <div class="html-code-container">
+            
+            </div>
+
+        </div>
+
+        <div class="css-code-wrapper">
+            <h2>CSS</h2>
+           
+            <div class="css-code-container">
+
+            </div>
+           
+        </div>
+        </div>
+    </div>
+</body>
+</html>
