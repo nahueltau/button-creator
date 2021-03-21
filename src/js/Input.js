@@ -1,22 +1,22 @@
-    const ColorInput = (id, title, value)=>{
+    const Input = (type,id, title, value, min, max)=>{
           let component = document.createElement("div");
           let input = document.createElement("input");
           let label = document.createElement("label");
-          label.setAttribute("for",id+"-config");
-          let hoverButton = document.createElement("span");
-          hoverButton.innerText = ":hover";
-          input.id = id+"-config";
           
-          input.type = "color";
+          input.id = id+"-config";
           input.setAttribute("value",value);
+          input.value = value;
+          input.type = type;
+          input.min = min;
+          input.max = max;
+          
           label.innerText = title;
           component.appendChild(label);
           component.appendChild(input);
-          component.appendChild(hoverButton)
-
+          label.setAttribute("for",id+"-config");
         return component.innerHTML;
 
 
     }
       
-export default ColorInput;
+export default Input;

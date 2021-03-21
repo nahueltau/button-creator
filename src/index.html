@@ -7,30 +7,45 @@
     <title>Button Creator</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" type="module" defer></script>
-    <style id="main"></style>
-    <style id="hover"></style>
+    <style id="main" class="stylesheet-view"></style>
+    <style id="button" class="stylesheet-view"></style>
+    <style id="hover" class="stylesheet-view"></style>
 </head>
 <body>
     <div class="app-container">
         <div class="row">
-            <div class="view-container">
-                <button class="button" style="cursor:pointer;transition: 1s;">Botón</button>
+            <div class="container">
+                <button class="button">Botón</button>
             </div>
             <div class="config-container">
                     <p>General</p>
+                    <div id="background-container" data-title="Background" data-value="#0a5c44" data-type="color" class="selector-object selector"></div>
                     
-                     <div id="background-container" data-title="Container Background!" data-value="#0a5c44" class="color-selector"></div>
                     <p>Button</p>
-                    <div>
+                    <div class="selector">
                         <label for="text-content-config">Text</label>
                         <input type="text" id="text-content-config" value="botón">
-                         </div>
-                    <div id="background-color" data-title="Background!" data-value="#8a0099" class="color-selector"></div>
+                    </div>
+                    <div class="background-color-wrapper property-wrapper">
+                        <div id="background-color" data-title="Background" data-value="#8a0099" data-type="color" class="selector-object selector"></div> 
+                        <div data-id="background-color" data-bind="background-color" data-type="color" class="add-hover">-add hover</div>
+                    </div>
+                    
                     <p>Border</p>
-                    <div id="border-radius" data-title="Radius" data-value="35" data-min="0" data-max="200" class="range-selector"></div>
-                    <div id="border-width" data-title="Width" data-value="8" data-min="0" data-max="20" class="range-selector"></div>
-                    <div id="border-color" data-title="Color!" data-value="#fffff3" class="color-selector"></div>
-                    <div>
+
+                    <div class="border-radius-wrapper property-wrapper">
+                        <div id="border-radius" data-title="Radius" data-value="35" data-min="0" data-max="200" data-type="range" class="selector-object selector"></div>
+                        <div data-id="border-radius" data-bind="border-radius" data-type="range" class="add-hover">-add hover</div>
+                    </div>
+                    <div class="border-width-wrapper property-wrapper">
+                        <div id="border-width" data-title="Width" data-value="8" data-min="0" data-max="20" data-type="range" class="selector-object selector"></div>
+                        <div data-id="border-width" data-bind="border-width" data-type="range" class="add-hover">-add hover</div>
+                    </div>
+                    <div class="border-color-wrapper property-wrapper">
+                        <div id="border-color" data-title="Color" data-value="#fffff3" data-type="color" class="selector-object selector"></div>
+                        <div data-id="border-color" data-bind="border-color" data-type="color" class="add-hover">-add hover</div>
+                    </div>
+                    <div class="selector">
                         <label for="border-style-config">Style</label>
                         <select name="" id="border-style-config" size="1">
                             <option value="solid">Solid</option>
@@ -44,15 +59,31 @@
                             <option value="hidden">Hidden</option>
                             <option value="none">None</option>
                         </select>
-                        
+                    
                     </div>
                     <p>Padding</p>
+                    <div class="padding-wrapper property-wrapper">
+                        <div id="padding-x" data-title="X Direction" data-value="100" data-min="0" data-max="200" data-type="range" class="selector-object selector"></div>
+                     
+
+                        <div id="padding-y" data-title="Y Direction" data-value="31" data-min="0" data-max="200" data-type="range" class="selector-object selector"></div>
+                        <div data-id="padding" data-bind="padding" data-type="range" class="add-hover">-add hover</div>
+                    </div>
                     
-                    <div id="padding-x" data-title="X Direction" data-value="100" data-min="0" data-max="200" class="range-selector"></div>
-                    <div id="padding-y" data-title="Y Direction" data-value="31" data-min="0" data-max="200" class="range-selector"></div>
+                    
+                  
+                       
+                    
                     <p>Text</p>
-                    <div id="text-color" data-title="Color!" data-value="#ffffff" class="color-selector"></div>
-                    <div id="font-size" data-title="Size" data-value="40" data-min="12" data-max="72" class="range-selector"></div><div>
+                    <div class="color-wrapper property-wrapper">
+                        <div id="color" data-title="Color" data-value="#ffffff" data-type="color" class="selector-object selector"></div>
+                        <div data-id="color" data-bind="color" data-type="color" class="add-hover">-add hover</div>
+                    </div>
+                    <div class="font-size-wrapper property-wrapper">
+                        <div id="font-size" data-title="Size" data-value="40" data-min="12" data-max="72" data-type="range" class="selector-object selector"></div>
+                        <div data-id="font-size" data-bind="font-size" data-type="range" class="add-hover">-add hover</div>
+                    </div>
+                    <div class="selector">
                         <label for="text-transform-config">Transform</label>
                         <select name="" id="text-transform-config">
                             <option value="none">None</option>
@@ -65,13 +96,15 @@
                         
                     </div>
                     <p>Shadow</p>
-
-                    <div id="shadow-x" data-title="X" data-value="10" data-min="-20" data-max="20" class="range-selector"></div>
-                    <div id="shadow-y" data-title="Y" data-value="10" data-min="-20" data-max="20" class="range-selector"></div>
-                    <div id="shadow-blur" data-title="Blur" data-value="2" data-min="0" data-max="40" class="range-selector"></div>
-                    <div id="shadow-color" data-title="Color!" data-value="#333333" class="color-selector"></div>
-                    
-
+                <div class="box-shadow-wrapper property-wrapper">
+                    <div id="shadow-x" data-title="X" data-value="10" data-min="-20" data-max="20" data-type="range" class="selector-object selector"></div>
+                    <div id="shadow-y" data-title="Y" data-value="10" data-min="-20" data-max="20" data-type="range" class="selector-object selector"></div>
+                    <div id="shadow-blur" data-title="Blur" data-value="2" data-min="0" data-max="40" data-type="range" class="selector-object selector"></div>
+                    <div id="shadow-color" data-title="Color" data-value="#333333" data-type="color" class="selector-object selector"></div>
+                    <div data-id="box-shadow" data-bind="box-shadow" data-type="range" class="add-hover">-add hover</div>
+                </div>
+                    <input type="text" value="pointer" id="cursor-config" style="display: none;">
+                    <input type="text" value="1s" id="transition-config" style="display: none;">
                 </div>
             
         </div>

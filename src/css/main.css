@@ -13,8 +13,8 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.view-container{
-    background-color: white;
+.container{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,15 +26,29 @@ body{
     color: white;
     font-weight: 500;
     letter-spacing: 1px;
-    padding: 2rem;
+    position: relative;
     box-sizing: border-box;
     border-right: 2px solid black;
     height: 50vh;
     line-height: 1.5rem;
-    overflow-y: auto;
+    overflow: auto;
+    
 }
-.css-code-container{
-    padding-left: 1rem;
+.html-code-wrapper h2,.css-code-wrapper h2{
+    background-color: rgba(17, 17, 17, 0.1);
+    box-shadow: 0px 10px 50px rgba(17, 17, 17, 0.5);
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    
+}
+.css-code-container,.html-code-container{
+    padding-top: 5rem;
+    padding-left: 2rem;
+    box-sizing: border-box;
 }
 .config-container{
     height: 50vh;
@@ -46,18 +60,55 @@ body{
    font-weight: bold;
    
 }
-.config-container div{
+.selector{
+    position: relative;
     width: 40%;
-    padding: .2rem 2rem;
+    padding: .5rem 2rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
+.selector div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
 .config-container label{
     padding-right: .5rem;
 }
-.config-container label span{
-    color: #ddd;
+.toggle-hover{
+    cursor: pointer;
+    color: #888;
+    position: absolute;
+    top: 1.8rem;
+    left: 2.5rem;
+    font-size: .8rem;
+
+}
+.toggle-hover:hover{
+    color:cornflowerblue;
 }
 
+.property-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.add-hover, .remove-hover{
+    font-size: .8rem;
+    margin: 0;
+    color: #999;
+    cursor: pointer;
+    padding-left: 3rem;
+    margin-top: -.5rem;
+}
+.add-hover:hover,.remove-hover:hover{
+    color: rgb(102, 80, 247);
+}
+.hover-container label::after{
+    content: ":hover";
+    font-size: .8rem;
+}

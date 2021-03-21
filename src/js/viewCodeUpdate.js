@@ -1,12 +1,12 @@
-const updateCode = (mainStylesContainer)=>{
+const updateCode = ()=>{
     showHTMLcode();
-    showCSScode(mainStylesContainer);
+    showCSScode();
 }
 
 //HTML CODE SHOW
 const showHTMLcode = ()=>{
     let htmlViewer = document.querySelector(".html-code-container");
-    let viewCode =  document.querySelector(".view-container").innerHTML;
+    let viewCode =  document.querySelector(".container").outerHTML;
 
     let styleStartIndex = viewCode.search(/style="/i);
     let styleEndIndex = viewCode.search(/">/i);
@@ -20,11 +20,14 @@ const showHTMLcode = ()=>{
     htmlViewer.innerHTML = viewCodeEscaped;
 }
 //CSS SHOW CODE
-const showCSScode = (mainStylesContainer)=>{
+const showCSScode = ()=>{
+    let stylesheets = document.querySelectorAll(".stylesheet-view");
     let cssViewer = document.querySelector(".css-code-container");
-    let viewCode = mainStylesContainer.innerText;
-    let viewCodewithBreaks = viewCode.replace(/;/g,";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").replace(/{/g,"{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").replace(/:/g,":&nbsp;");
-
-    cssViewer.innerHTML = viewCodewithBreaks;
+    cssViewer.innerHTML = "";
+    stylesheets.forEach(sheet=>{
+        let viewCode = sheet.innerText;
+        let viewCodewithBreaks = viewCode.replace(/;/g,";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").replace(/{/g,"{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")/* .replace(/:/g,":&nbsp;") */;
+        cssViewer.innerHTML += viewCodewithBreaks+"<br><br>";
+    })
 }
 export default updateCode;
