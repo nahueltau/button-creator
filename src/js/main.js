@@ -8,62 +8,79 @@ function elementRender(){
     })
 }
 function addHoverSelector(){
-    let addHoverButtons = document.querySelectorAll(".add-hover");                                                                  //GET ADD HOVER HTML ELEMENTS
-    addHoverButtons.forEach(element=>{                                                                                              //ADD EVENT TO CREATE HOVER INPUTS
-        
-        let dataId = element.getAttribute("data-id");                                                                           //FINDING PROPERTY TO ADD HOVER EFFECT                              
-        let dataBind = element.getAttribute("data-bind");                                                                           //FINDING PROPERTY TO ADD HOVER EFFECT                              
-        let parentClass = "."+dataId+"-wrapper";                                                                               //FORMATTING CLASS OF THE WRAPPER
+    let addHoverButtons = document.querySelectorAll(".add-hover"); 
+    
+    
+    addHoverButtons.forEach(element=>{
+        element.setAttribute("hover-active","false");                                                                                                                                                                                      
+        let dataBind = element.getAttribute("data-bind");
+        element.innerText ="-add "+dataBind+":hover";                                                                                                      
+        let parentClass = "."+dataBind+"-wrapper";                                                                              
         let children = document.querySelectorAll(parentClass+" .selector-object");
-        console.log(children);
-        let parentDiv = document.querySelector(parentClass);                                                                        //GETTING WRAPPER HTML ELEMENT
-
-
-       
-
-
-
+        let parentDiv = document.querySelector(parentClass);                                                                      
 
         element.addEventListener("click",()=>{
-            let parent_property = {};                                                                                               //PROPERTY OBJECT
-            buttonPropsArray.forEach(element=>{                                                                                     //FINDING A MATCH IN THE PROPERTY OBJECTS
+            let hover = element.getAttribute("hover-active")
+            let parent_property = {};
+
+            buttonPropsArray.forEach(element=>{                                                                       
                 if(element.name === dataBind){
                     parent_property = element;
                 }
             })
-
-            children.forEach(e=>{
-                let clone = e.cloneNode([true])
-                clone.id = "hover-"+clone.id;
-                clone.classList.add("hover-container")
-                parentDiv.appendChild(clone)
-                let cloneInput = document.querySelector("#"+clone.id+" input");
-                cloneInput.id = "hover-"+cloneInput.id;
-            })
             
-            element.style.display="none";                                                                                            //HIDING "ADD CLASS CTA"
+            element.innerText ="-remove "+dataBind+":hover";  
 
+            if(hover==="false"){
 
-            let newControllers = [];
-            parent_property._inputControllers.forEach(e=>{
-                
-                newControllers.push(new Controller("#hover-"+e.anchor.slice(1), e.unit,true))
-                console.log(newControllers)
-                })
-                parent_property._inputControllers.push(...newControllers); 
+                    children.forEach(e=>{
+                        let clone = e.cloneNode([true])
+                        clone.id = "hover-"+clone.id;
+                        clone.classList.add("hover-container")
+                        parentDiv.appendChild(clone);
+                        let cloneInput = document.querySelector("#"+clone.id+" input");
+                        cloneInput.id = "hover-"+cloneInput.id;
+                    })
+                    
+                    let newControllers = [];
 
+                    parent_property._inputControllers.forEach(e=>{
+                        newControllers.push(new Controller("#hover-"+e.anchor.slice(1), e.unit,true))
+                    })
 
+                    parent_property._inputControllers.push(...newControllers); 
 
-                newControllers.forEach(e=>{
-                    e.HTMLElement.addEventListener("input",()=>{
+                    newControllers.forEach(e=>{
+                        e.HTMLElement.addEventListener("input",()=>{
+                                        parent_property.setValue();
+                                        updateCode(elementStyleSheets[parent_property.stylesheet]);
+                                        injectStyles(parent_property.selector, parent_property.stylesheet, buttonPropsArray);
+                                        })
                                     parent_property.setValue();
-                                    updateCode(elementStyleSheets[parent_property.stylesheet]);
-                                    injectStyles(parent_property.selector, parent_property.stylesheet, buttonPropsArray);
-                                    })
-                                parent_property.setValue();
 
-            })
+                    })
+                    element.setAttribute("hover-active","true");  
+            }
 
+            if(hover === "true"){
+                
+                let filteredArray = parent_property._inputControllers.filter((item)=>{
+                    if(item.hover!==true){
+                        return item;
+                    }else{
+                        item.HTMLElement.parentElement.outerHTML = "";
+                    }
+                })
+                parent_property._inputControllers = filteredArray;
+                
+                element.setAttribute("hover-active","false");
+                element.innerText ="-add "+dataBind+":hover";
+
+                parent_property.setValue();
+                
+                injectStyles(parent_property.selector, parent_property.stylesheet, buttonPropsArray);
+                updateCode(elementStyleSheets[parent_property.stylesheet]);
+            }
         })
     })
 }
@@ -165,7 +182,7 @@ window.addEventListener("load",()=>{
     buttonPropsArray.push(new Property("border-width",[new Controller("#border-width-config","px")])); 
     buttonPropsArray.push(new Property("border-radius",[new Controller("#border-radius-config","px")])); 
     buttonPropsArray.push(new Property("font-size",[new Controller("#font-size-config","px")])); 
-    buttonPropsArray.push(new Property("box-shadow",[new Controller("#shadow-x-config","px"),new Controller("#shadow-y-config","px"),new Controller("#shadow-blur-config","px"),new Controller("#shadow-color-config")])); 
+    buttonPropsArray.push(new Property("box-shadow",[new Controller("#shadow-x-config","px"),new Controller("#shadow-y-config","px"),new Controller("#shadow-blur-config","px"),new Controller("#shadow-spread-config","px"),new Controller("#shadow-color-config")])); 
     buttonPropsArray.push(new Property("padding",[new Controller("#padding-y-config","px"),new Controller("#padding-x-config","px")])); 
     //ADDING EVENTS TO HTML ELEMENTS
     propertiesArrayEventAdder(buttonPropsArray);

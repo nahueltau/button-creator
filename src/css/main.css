@@ -62,7 +62,6 @@ body{
 }
 .selector{
     position: relative;
-    width: 40%;
     padding: .5rem 2rem;
     display: flex;
     flex-direction: row;
@@ -79,6 +78,7 @@ body{
 
 .config-container label{
     padding-right: .5rem;
+    font-size: .8rem;
 }
 .toggle-hover{
     cursor: pointer;
@@ -96,19 +96,28 @@ body{
 .property-wrapper{
     display: flex;
     flex-direction: column;
+    width: 350px;
+    background-color: #e3e3e36e;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+    position: relative;
 }
 .add-hover, .remove-hover{
-    font-size: .8rem;
-    margin: 0;
+    font-size: .7rem;
+    margin:.2rem;
     color: #999;
     cursor: pointer;
-    padding-left: 3rem;
-    margin-top: -.5rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
 }
 .add-hover:hover,.remove-hover:hover{
     color: rgb(102, 80, 247);
+ 
 }
 .hover-container label::after{
     content: ":hover";
     font-size: .8rem;
+    color: goldenrod;
 }
