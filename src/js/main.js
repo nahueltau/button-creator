@@ -63,8 +63,8 @@ function addHoverSelector(){
                     newControllers.forEach(e=>{
                         e.HTMLElement.addEventListener("input",()=>{
                                         parent_property.setValue();
-                                        updateCode(elementStyleSheets[parent_property.stylesheet]);
-                                        injectStyles(parent_property.selector, parent_property.stylesheet, buttonPropsArray);
+                                        updateCode();
+                                        injectStyles(buttonPropsArray);
                                         })
                                     parent_property.setValue();
 
@@ -89,8 +89,8 @@ function addHoverSelector(){
 
                 parent_property.setValue();
                 
-                injectStyles(parent_property.selector, parent_property.stylesheet, buttonPropsArray);
-                updateCode(elementStyleSheets[parent_property.stylesheet]);
+                injectStyles(buttonPropsArray);
+                updateCode();
             }
         })
     })
@@ -124,14 +124,7 @@ class Property{
     }
 }
 
-//STYLES OBJECTS
-const elementStyleSheets = {
-
-    button: document.querySelector("#button"),
-    background: document.querySelector("#main"),
-    hover: document.querySelector("#hover")   
-}
-const injectStyles = (selector, stylesheet, propsArray)=>{
+const injectStyles = (propsArray)=>{
     
     for(let property of propsArray){
          if(property.stylesheet === "background"){
@@ -159,16 +152,11 @@ const propertiesArrayEventAdder = (propsArray)=>{
         
                     individualProperty._inputControllers
                     .forEach(controller=>{
-           
                      controller.HTMLElement.addEventListener("input",()=>{
                         individualProperty.setValue();
-                        
-                        updateCode(elementStyleSheets[individualProperty.stylesheet]);
-                        injectStyles(individualProperty.selector, individualProperty.stylesheet, propsArray);
-                        
+                        updateCode();
+                        injectStyles(propsArray);
                      })
-                   
-                     
                     })
     })                  
 }
@@ -195,8 +183,8 @@ window.addEventListener("load",()=>{
     propertiesArrayEventAdder(buttonPropsArray);
     propertiesArrayEventAdder(backgroundPropsArray);          
     //ONLOAD STYLES
-    injectStyles("container","background",backgroundPropsArray);
-    injectStyles("button","button",buttonPropsArray);
+    injectStyles(backgroundPropsArray);
+    injectStyles(buttonPropsArray);
     updateCode();
 
     //TEXT INPUT

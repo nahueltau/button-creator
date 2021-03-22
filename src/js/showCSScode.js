@@ -1,18 +1,3 @@
-/* import showHTMLcode from "./showHTMLcode.js";
-import showCSScode from "./showCSScode.js";
- */
-const updateCode = ()=>{
-    showHTMLcode();
-    showCSScode();
-}
-
-//HTML CODE SHOW
-const showHTMLcode = ()=>{
-    let htmlViewer = document.querySelector(".html-code-container");
-    let viewCode =  document.querySelector(".container").outerHTML;
-    htmlViewer.innerText = viewCode;
-}
-//CSS SHOW CODE
 const showCSScode = ()=>{
     let cssViewer = document.querySelector(".css-code-container");
     cssViewer.innerHTML = "";
@@ -41,4 +26,4 @@ const showCSScode = ()=>{
 
     }
 }
-export default updateCode;
+export default showCSScode;
