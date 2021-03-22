@@ -1,44 +1,54 @@
 import updateCode from "./viewCodeUpdate.js";
 import Input from "./Input.js";
-
+//CONFIG
+let button = document.querySelector(".container button");
+let buttonTextContent = document.querySelector("#text-content-config")
+let textContentUpdate = ()=>{
+    button.innerText =  buttonTextContent.value;
+}
+let buttonPropsArray = [];
+let backgroundPropsArray = [];
+//RENDER INPUTS PROGRAMMATICALLY
 function elementRender(){
     let selectors = document.querySelectorAll(".selector-object");
     selectors.forEach(element=>{
         element.innerHTML = Input(element.getAttribute("data-type"),`${element.id}`,element.getAttribute("data-title"), element.getAttribute("data-value"), element.getAttribute("data-min"), element.getAttribute("data-max"));
     })
 }
+//ADD HOVER FUNCTION
 function addHoverSelector(){
+    //selecting hover buttons
     let addHoverButtons = document.querySelectorAll(".add-hover"); 
     
     
     addHoverButtons.forEach(element=>{
-        element.setAttribute("hover-active","false");                                                                                                                                                                                      
+                                                                                                                                                                                        
         let dataBind = element.getAttribute("data-bind");
-        element.innerText ="-add "+dataBind+":hover";                                                                                                      
-        let parentClass = "."+dataBind+"-wrapper";                                                                              
-        let children = document.querySelectorAll(parentClass+" .selector-object");
-        let parentDiv = document.querySelector(parentClass);                                                                      
+        let parentDiv = element.parentElement;                                                                                                                                                                              
+        let children = parentDiv.querySelectorAll(".selector-object");                                              
+        element.setAttribute("hover-active","false");
+        element.innerText ="-add "+dataBind+":hover";
 
         element.addEventListener("click",()=>{
             let hover = element.getAttribute("hover-active")
-            let parent_property = {};
 
+            let parent_property = {};
             buttonPropsArray.forEach(element=>{                                                                       
                 if(element.name === dataBind){
                     parent_property = element;
                 }
             })
             
-            element.innerText ="-remove "+dataBind+":hover";  
-
             if(hover==="false"){
 
                     children.forEach(e=>{
                         let clone = e.cloneNode([true])
                         clone.id = "hover-"+clone.id;
                         clone.classList.add("hover-container")
-                        parentDiv.appendChild(clone);
-                        let cloneInput = document.querySelector("#"+clone.id+" input");
+                        e.insertAdjacentElement("afterend",clone);
+                        let cloneInput = clone.querySelector("input");
+                        let cloneLabel = clone.querySelector("label");
+                        cloneLabel.innerHTML = ""
                         cloneInput.id = "hover-"+cloneInput.id;
                     })
                     
@@ -59,7 +69,8 @@ function addHoverSelector(){
                                     parent_property.setValue();
 
                     })
-                    element.setAttribute("hover-active","true");  
+                    element.setAttribute("hover-active","true");
+                    element.innerText ="-remove "+dataBind+":hover";  
             }
 
             if(hover === "true"){
@@ -85,14 +96,7 @@ function addHoverSelector(){
     })
 }
 addHoverSelector();
-//CONFIG
-let button = document.querySelector(".container button");
-let buttonTextContent = document.querySelector("#text-content-config")
-let textContentUpdate = ()=>{
-    button.innerText =  buttonTextContent.value;
-}
-let buttonPropsArray = [];
-let backgroundPropsArray = [];
+
 
 //CLASSES
 class Controller {
@@ -128,21 +132,24 @@ const elementStyleSheets = {
     hover: document.querySelector("#hover")   
 }
 const injectStyles = (selector, stylesheet, propsArray)=>{
-    let style = "";
-    let hover = "";
     
     for(let property of propsArray){
-         if(property.stylesheet === stylesheet){
-            style+=property.name+":"+property.value+";";
+         if(property.stylesheet === "background"){
+            document.documentElement.style.setProperty(`--${property.name}-container`,property.value); 
+         }  
+         if(property.stylesheet === "button"){
+            if(property.value!==""){
+             document.documentElement.style.setProperty(`--${property.name}`,property.value);
+            }
+
             if(property.hover!==""){
-              hover+=property.name+":"+property.hover+";";    
+             document.documentElement.style.setProperty(`--${property.name}-hover`,property.hover);
+              
+            }else{
+                document.documentElement.style.setProperty(`--${property.name}-hover`,property.value);
             }
             
          }  
-    }
-    elementStyleSheets[stylesheet].innerText = `.${selector}{${style}}`;
-    if(selector==="button"){
-        elementStyleSheets["hover"].innerText = `.${selector}:hover{${hover}}`;
     }
     
 }
@@ -160,7 +167,7 @@ const propertiesArrayEventAdder = (propsArray)=>{
                         injectStyles(individualProperty.selector, individualProperty.stylesheet, propsArray);
                         
                      })
-                     individualProperty.setValue();
+                   
                      
                     })
     })                  

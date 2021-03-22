@@ -1,28 +1,61 @@
+:root{
+
+       --background-color: #6448ff;
+       --transition: 1s;
+       --cursor: pointer;
+       --border-radius: 0px;
+       --border-width: 7px;
+       --border-color: #fffff3;
+       --border-style: double;
+       --padding: 35px 138px;
+       --color: #bcbcbc;
+       --font-size: 43px;
+       --text-transform: uppercase;
+       --box-shadow: 12px 13px 0px 0px #002466;
+        
+        
+      
+       --background-color-hover: #63c965;
+       --border-radius-hover: 200px;
+       --border-color-hover: #4ff200;
+       --padding-hover: 123px 65px;
+       --color-hover: #ffffff;
+       --font-size-hover: 51px;
+       --box-shadow-hover: -1px 1px 22px 20px #1cff21;
+        
+        
+   
+       --background-color-container: #312e34;
+        
+        
+}
 body{
+    --main-color:rgb(0, 117, 255);
     margin: 0;
     font-family: sans-serif;
 }
 .app-container{
-    background-color: rgb(246, 240, 255);
+    background-color: rgb(255, 255, 255);
     width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-}
-.row{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.column{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 100vh;
+}
 .container{
-    
+    background-color: var(--background-color-container);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 
 }
-.html-code-wrapper,.css-code-wrapper{
-    background-color: rgb(62, 63, 80);
+/*CODE VIEWS*/
+.code-wrapper{
+    background-color: rgb(45, 45, 45);
     color: white;
     font-weight: 500;
     letter-spacing: 1px;
@@ -34,24 +67,37 @@ body{
     overflow: auto;
     
 }
-.html-code-wrapper h2,.css-code-wrapper h2{
-    background-color: rgba(17, 17, 17, 0.1);
-    box-shadow: 0px 10px 50px rgba(17, 17, 17, 0.5);
-    box-sizing: border-box;
-    width: 100%;
+.code-wrapper h2{
+    text-align: end;
     margin: 0;
-    padding: 1rem;
-    position: absolute;
-    top: 0;
-    
+    background-color: #222;
+    padding:1rem;
 }
 .css-code-container,.html-code-container{
-    padding-top: 5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     padding-left: 2rem;
     box-sizing: border-box;
 }
+/*CSS VIEW FORMAT*/
+.css-bracket,.css-semicolon{
+    color: white;
+}
+.css-selector{
+    color: lightskyblue;
+}
+.css-prop{
+    color: lightyellow;
+    padding-left: 2rem;
+}
+.css-value{
+    color:lightgreen;
+}
+
+
+/*INPUT PANEL*/
 .config-container{
-    height: 50vh;
+    height:100vh;
     overflow-y: auto;
     padding: 2rem;
     box-sizing: border-box;
@@ -62,7 +108,7 @@ body{
 }
 .selector{
     position: relative;
-    padding: .5rem 2rem;
+    padding: .8rem 2rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -80,29 +126,21 @@ body{
     padding-right: .5rem;
     font-size: .8rem;
 }
-.toggle-hover{
-    cursor: pointer;
-    color: #888;
-    position: absolute;
-    top: 1.8rem;
-    left: 2.5rem;
-    font-size: .8rem;
-
-}
-.toggle-hover:hover{
-    color:cornflowerblue;
-}
 
 .property-wrapper{
     display: flex;
     flex-direction: column;
     width: 350px;
-    background-color: #e3e3e36e;
+    
+    box-shadow: inset 8px 0 0 var(--main-color);
     margin-bottom: 1rem;
     padding: 1rem 0;
     position: relative;
 }
-.add-hover, .remove-hover{
+.property-wrapper:hover{
+    box-shadow: inset 8px 0 0 rgb(0, 0, 0);
+}
+.add-hover{
     font-size: .7rem;
     margin:.2rem;
     color: #999;
@@ -112,12 +150,43 @@ body{
     right: 0;
 
 }
-.add-hover:hover,.remove-hover:hover{
-    color: rgb(102, 80, 247);
+.add-hover:hover{
+    color: var(--main-color);
  
+}
+.hover-container{
+   margin-top: -1.7rem;
+   padding-left: 4rem;
 }
 .hover-container label::after{
     content: ":hover";
     font-size: .8rem;
     color: goldenrod;
 }
+/*BUTTON*/
+.button{
+     background-color: var(--background-color);
+     transition: var(--transition);
+     cursor: var(--cursor);
+     border-color:var(--border-color);
+     color: var(--color);
+     border-style: var(--border-style);
+     text-transform: var(--text-transform);
+     border-width:var(--border-width);
+     border-radius: var(--border-radius);
+     font-size: var(--font-size);
+     box-shadow: var(--box-shadow);
+     padding: var(--padding);
+}
+.button:hover{
+    background-color: var(--background-color-hover);
+    
+     cursor: var(--cursor-hover);
+     border-color:var(--border-color-hover);
+     color: var(--color-hover);
+     border-width:var(--border-width-hover);
+     border-radius: var(--border-radius-hover);
+     font-size: var(--font-size-hover);
+     box-shadow: var(--box-shadow-hover);
+     padding: var(--padding-hover);
+    }
