@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" type="module" defer></script>
     <style id="main" class="stylesheet-view"></style>
-  
+
 </head>
 <body>
     <div class="app-container">
@@ -19,7 +19,15 @@
             <div class="code-wrapper">
                 <h2>HTML</h2>
                 <div class="html-code-container">
-                
+                    <div><span class="html-symbol">&lt;</span><span class="html-tag">div </span><span class="html-attr">class</span>=<span class="html-class">"<span class="namespace-place"></span>container"</span><span class="html-symbol">&gt;</span></div>
+                        <div>
+                            <div><span class="html-symbol">&lt;</span><span class="html-tag">button </span><span class="html-attr">class</span>=<span class="html-class">"<span class="namespace-place"></span>button"</span><span class="html-symbol">&gt;</span></div>
+                            <div>
+                                <div class="html-button-text"></div>
+                            </div>
+                            <div><span class="html-symbol">&lt;/</span><span class="html-tag">button</span><span class="html-symbol">&gt;</span></div>
+                        </div>
+                    <div><span class="html-symbol">&lt;/</span><span class="html-tag">div</span><span class="html-symbol">&gt;</span></div>
                 </div>
                 <h2>CSS</h2>
                         
@@ -30,12 +38,23 @@
     
            
         </div>
-       
-            <div class="config-container">
+        
+            <!--   ######################################3    -->       
+        <div class="column-column">
+            <div class="column-column-in">
+               <!--   ######################################3    -->
+                
+           
                 <p>General</p>
                 <div class="property-wrapper">
-                <div id="background-container" data-title="Background" data-value="#312e34" data-type="color" class="selector-object selector"></div>
+                <div id="background-color-container" data-title="Background" data-type="color" class="selector-object selector"></div>
                 </div>
+                <div class="property-wrapper">
+                    <div class="selector">
+                        <label for="namespace-content-config">Namespace</label>
+                        <input type="text" id="namespace-content-config" value="button-creator-">
+                    </div>
+                    </div>
                 <p>Button</p>
                 <div class="property-wrapper">
                 <div class="selector">
@@ -44,23 +63,23 @@
                 </div>
                 </div>
                 <div class="background-color-wrapper property-wrapper">
-                    <div id="background-color" data-title="Background" data-value="#6448ff" data-type="color" class="selector-object selector"></div> 
-                    <div data-bind="background-color"  class="add-hover"></div>
+                    <div id="background-color" data-title="Background" data-type="color" class="selector-object selector"></div> 
+                 
                 </div>
                 
                 <p>Border</p>
 
                 <div class="border-radius-wrapper property-wrapper">
-                    <div id="border-radius" data-title="Radius" data-value="0" data-min="0" data-max="200" data-type="range" class="selector-object selector"></div>
-                    <div data-bind="border-radius" class="add-hover"></div>
+                    <div id="border-radius" data-title="Radius" data-min="0" data-max="200" data-type="range" class="selector-object selector"></div>
+              
                 </div>
                 <div class="border-width-wrapper property-wrapper">
-                    <div id="border-width" data-title="Width" data-value="7" data-min="0" data-max="20" data-type="range" class="selector-object selector"></div>
-                    <div data-bind="border-width"  class="add-hover"></div>
+                    <div id="border-width" data-title="Width"data-min="0" data-max="20" data-type="range" class="selector-object selector"></div>
+                  
                 </div>
                 <div class="border-color-wrapper property-wrapper">
-                    <div id="border-color" data-title="Color" data-value="#fffff3" data-type="color" class="selector-object selector"></div>
-                    <div data-bind="border-color"  class="add-hover"></div>
+                    <div id="border-color" data-title="Color" data-type="color" class="selector-object selector"></div>
+                  
                 </div>
                 <div class="property-wrapper">
                 <div class="selector">
@@ -80,13 +99,31 @@
                 
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--   ######################################3    -->
+            </div>  
+            <div class="column-column-in">
+                <!--   ######################################3    -->
+
+                
                 <p>Padding</p>
                 <div class="padding-wrapper property-wrapper">
-                    <div id="padding-x" data-title="X Direction" data-value="138" data-min="0" data-max="200" data-type="range" class="selector-object selector"></div>
+                    <div id="padding-x" data-bind="padding" data-title="X Direction" data-min="0" data-max="200" data-type="range" class="selector-object selector" data-order="0"></div>
                  
 
-                    <div id="padding-y" data-title="Y Direction" data-value="35" data-min="0" data-max="200" data-type="range" class="selector-object selector"></div>
-                    <div data-bind="padding" class="add-hover"></div>
+                    <div id="padding-y" data-bind="padding" data-title="Y Direction" data-min="0" data-max="200" data-type="range" class="selector-object selector" data-order="1"></div>
+                  
                 </div>
                 
                 
@@ -95,12 +132,12 @@
                 
                 <p>Text</p>
                 <div class="color-wrapper property-wrapper">
-                    <div id="color" data-title="Color" data-value="#bcbcbc" data-type="color" class="selector-object selector"></div>
-                    <div data-id="color" data-bind="color" data-type="color" class="add-hover"></div>
+                    <div id="color"  data-title="Color" data-type="color" class="selector-object selector"></div>
+                    
                 </div>
                 <div class="font-size-wrapper property-wrapper">
-                    <div id="font-size" data-title="Size" data-value="43" data-min="12" data-max="72" data-type="range" class="selector-object selector"></div>
-                    <div data-bind="font-size" class="add-hover"></div>
+                    <div id="font-size" data-title="Size" data-min="12" data-max="72" data-type="range" class="selector-object selector"></div>
+                    
                 </div>
                 <div class="property-wrapper">
                 <div class="selector">
@@ -118,18 +155,39 @@
                 </div>
                 <p>Box-Shadow</p>
             <div class="box-shadow-wrapper property-wrapper">
-                <div id="shadow-x" data-title="X" data-value="12" data-min="-20" data-max="20" data-type="range" class="selector-object selector"></div>
-                <div id="shadow-y" data-title="Y" data-value="13" data-min="-20" data-max="20" data-type="range" class="selector-object selector"></div>
-                <div id="shadow-blur" data-title="Blur" data-value="0" data-min="0" data-max="40" data-type="range" class="selector-object selector"></div>
-                <div id="shadow-spread" data-title="Spread" data-value="0" data-min="0" data-max="40" data-type="range" class="selector-object selector"></div>
-                <div id="shadow-color" data-title="Color" data-value="#002466" data-type="color" class="selector-object selector"></div>
-                <div data-bind="box-shadow" class="add-hover"></div>
+                <div id="shadow-x" data-bind="box-shadow" data-title="X" data-min="-20" data-max="20" data-type="range" class="selector-object selector" data-order="0"></div>
+                <div id="shadow-y" data-bind="box-shadow" data-title="Y" data-min="-20" data-max="20" data-type="range" class="selector-object selector" data-order="1"></div>
+                <div id="shadow-blur" data-bind="box-shadow" data-title="Blur"  data-min="0" data-max="40" data-type="range" class="selector-object selector" data-order="2"></div>
+                <div id="shadow-spread" data-bind="box-shadow" data-title="Spread"  data-min="0" data-max="40" data-type="range" class="selector-object selector" data-order="3"></div>
+                <div id="shadow-color" data-bind="box-shadow" data-title="Color" data-type="color" class="selector-object selector" data-order="4"></div>
+                
             </div>
 
 
                 <input type="text" value="pointer" id="cursor-config" style="display: none;">
                 <input type="text" value="1s" id="transition-config" style="display: none;">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--   ######################################3    -->
             </div>
+        </div>
+        <!--   ######################################3    -->
+
+
+
         
 
         

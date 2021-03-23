@@ -39,12 +39,22 @@ body{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+  
 }
 .column{
     display: grid;
     grid-template-rows: 1fr 1fr;
     height: 100vh;
 }
+.column-column{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-y: auto;
+    height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
 .container{
     background-color: var(--background-color-container);
     display: flex;
@@ -93,15 +103,30 @@ body{
 .css-value{
     color:lightgreen;
 }
-
+/*HTML VIEW FORMAT*/
+.html-code-container div{
+    padding: 0 0 0 2rem;
+}
+.html-symbol{
+    color: #999;
+}
+.html-tag{
+    color: cornflowerblue; 
+}
+.html-attr{
+    color: lightcyan;
+}
+.html-class{
+    color: sandybrown;
+}
 
 /*INPUT PANEL*/
-.config-container{
+/* .config-container{
     height:100vh;
     overflow-y: auto;
     padding: 2rem;
     box-sizing: border-box;
-}
+}  *//* 1column setup */
 .config-container p{
    font-weight: bold;
    
@@ -189,4 +214,12 @@ body{
      font-size: var(--font-size-hover);
      box-shadow: var(--box-shadow-hover);
      padding: var(--padding-hover);
+    }
+
+
+
+
+    /*BANDAID*/
+    #hover-background-color-container{
+        display: none;
     }

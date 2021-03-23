@@ -1,6 +1,6 @@
 const showHTMLcode = ()=>{
-    let htmlViewer = document.querySelector(".html-code-container");
-    let viewCode =  document.querySelector(".container").outerHTML;
-    htmlViewer.innerText = viewCode;
+    let buttonText = document.querySelector(".html-button-text");
+    let viewCode =  document.querySelector("#text-content-config").value;
+    buttonText.innerText = viewCode;
 }
 export default showHTMLcode;
