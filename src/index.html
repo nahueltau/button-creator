@@ -5,19 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Button Creator</title>
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/main.js" type="module" defer></script>
     <style id="main" class="stylesheet-view"></style>
+    <script>
 
+function selectText(containerClass) {
+    if(document.querySelector(".tooltip")===null){
+    if (window.getSelection) {
+
+        let range = document.createRange();
+        range.selectNode(document.querySelector("."+containerClass));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        
+        document.execCommand('copy');
+        range.selectNode(document.querySelector("svg"));
+ 
+    }
+    let e = event;
+    event.target.parentElement.classList.add("tooltip");
+    setTimeout(()=>{
+        document.querySelector(".tooltip").classList.add("tooltip-fade");}
+        ,700)
+    setTimeout(()=>{
+        document.querySelector(".tooltip").classList.remove("tooltip","tooltip-fade")}
+        ,1000)
+}}
+
+
+
+    </script>
 </head>
 <body>
     <div class="app-container">
-        <div class="column">
-            <div class="container">
-                <button class="button">Botón</button>
+        <div class="column-2-rows">
+            <div class="viewport zoomed">
+                <div class="scale-control"><span>x1</span> <span>x2</span></div>
+                <div class="container scalex2">
+                        <button class="button">Botón</button>
+                    </div>
+
             </div>
+  
             <div class="code-wrapper">
-                <h2>HTML</h2>
+                <div class="code-wrapper-title"> <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000" onclick="selectText('html-code-container')"><rect fill="none" height="24" width="24"/>
+                    <use href="#copy-icon-svg"></use>
+                </svg><h2>HTML</h2></div>
                 <div class="html-code-container">
                     <div><span class="html-symbol">&lt;</span><span class="html-tag">div </span><span class="html-attr">class</span>=<span class="html-class">"<span class="namespace-place"></span>container"</span><span class="html-symbol">&gt;</span></div>
                         <div>
@@ -29,7 +63,9 @@
                         </div>
                     <div><span class="html-symbol">&lt;/</span><span class="html-tag">div</span><span class="html-symbol">&gt;</span></div>
                 </div>
-                <h2>CSS</h2>
+                <div class="code-wrapper-title"> <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000" onclick="selectText('css-code-container')"><rect fill="none" height="24" width="24"/>
+                    <use href="#copy-icon-svg"></use>
+                </svg><h2>CSS</h2></div>
                         
                             <div class="css-code-container">
     
@@ -40,8 +76,8 @@
         </div>
         
             <!--   ######################################3    -->       
-        <div class="column-column">
-            <div class="column-column-in">
+        <div class="config-container">
+            <div class="column">
                <!--   ######################################3    -->
                 
            
@@ -55,15 +91,16 @@
                         <input type="text" id="namespace-content-config" value="button-creator-">
                     </div>
                     </div>
-                <p>Button</p>
-                <div class="property-wrapper">
+                 <div class="property-wrapper">
                 <div class="selector">
                     <label for="text-content-config">Text</label>
                     <input type="text" id="text-content-config" value="botón">
                 </div>
-                </div>
+                </div>    
+                <p>Background</p>
+       
                 <div class="background-color-wrapper property-wrapper">
-                    <div id="background-color" data-title="Background" data-type="color" class="selector-object selector"></div> 
+                    <div id="background-color" data-title="Color" data-type="color" class="selector-object selector"></div> 
                  
                 </div>
                 
@@ -113,16 +150,16 @@
 
                 <!--   ######################################3    -->
             </div>  
-            <div class="column-column-in">
+            <div class="column">
                 <!--   ######################################3    -->
 
                 
                 <p>Padding</p>
                 <div class="padding-wrapper property-wrapper">
-                    <div id="padding-x" data-bind="padding" data-title="X Direction" data-min="0" data-max="200" data-type="range" class="selector-object selector" data-order="0"></div>
+                    <div id="padding-x" data-bind="padding" data-title="X Direction" data-min="0" data-max="200" data-type="range" class="selector-object selector" data-order="1"></div>
                  
 
-                    <div id="padding-y" data-bind="padding" data-title="Y Direction" data-min="0" data-max="200" data-type="range" class="selector-object selector" data-order="1"></div>
+                    <div id="padding-y" data-bind="padding" data-title="Y Direction" data-min="0" data-max="200" data-type="range" class="selector-object selector" data-order="0"></div>
                   
                 </div>
                 
@@ -180,7 +217,11 @@
 
 
 
-
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><rect fill="none" height="24" width="24" style="display:none;"/>
+                    <symbol id="copy-icon-svg">
+                        <path d="M18,2H9C7.9,2,7,2.9,7,4v12c0,1.1,0.9,2,2,2h9c1.1,0,2-0.9,2-2V4C20,2.9,19.1,2,18,2z M18,16H9V4h9V16z M3,15v-2h2v2H3z M3,9.5h2v2H3V9.5z M10,20h2v2h-2V20z M3,18.5v-2h2v2H3z M5,22c-1.1,0-2-0.9-2-2h2V22z M8.5,22h-2v-2h2V22z M13.5,22L13.5,22l0-2h2 v0C15.5,21.1,14.6,22,13.5,22z M5,6L5,6l0,2H3v0C3,6.9,3.9,6,5,6z"/>
+                    </symbol>
+                 </svg>
                 <!--   ######################################3    -->
             </div>
         </div>
@@ -190,7 +231,9 @@
 
         
 
-        
+
     </div>
+
+
 </body>
 </html>

@@ -8,6 +8,7 @@ const showCSScode = ()=>{
                 cssViewer.innerHTML += `<span class="css-selector">.${document.querySelector("#namespace-content-config").value}${ele.selector}<span><span class="css-bracket">{<span><br>`
                 propsToShow.forEach(prop=>{
                     let value = getComputedStyle(document.documentElement).getPropertyValue(`--${prop}${ele.subfix}`);
+                    if(value==="inherit"){value=""}
                     if(ele.subfix==="-hover"){
                         if(getComputedStyle(document.documentElement).getPropertyValue(`--${prop}${ele.subfix}`)==getComputedStyle(document.documentElement).getPropertyValue(`--${prop}`)){
                            value=""; 

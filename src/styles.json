@@ -1,0 +1,30 @@
+{"buttons":[
+
+    {
+        "background-color-container": "#312e34",
+        "background-color-container-hover": "initial",
+        "background-color": "#6448ff",
+        "transition": "1s",
+        "cursor": "pointer",
+        "border-radius": "0px",
+        "border-width": "4px",
+        "border-color": "#fffff3",
+        "border-style": "double",
+        "padding": "14px 70px",
+        "color": "#bcbcbc",
+        "font-size": "20px",
+        "text-transform": "uppercase",
+        "box-shadow": "7px 7px 0px 0px #002466",
+        "background-color-hover": "#63c965",
+        "border-radius-hover": "90px",
+        "border-width-hover": "4px",
+        "border-color-hover": "#4ff200",
+        "padding-hover": "70px 40px",
+        "color-hover": "#ffffff",
+        "font-size-hover": "28px",
+        "box-shadow-hover": "0px 0px 22px 20px #1cff21"
+    }
+
+
+]
+}

@@ -8,21 +8,35 @@ class Property{
         this.value = "";
         this.hover = "";
         this.active = "";
-        //this.camelCase = prop.match(/\-[a-z]/)!==null ? prop.replace(/\-[a-z]/, prop.match(/\-[a-z]/)[0].slice(1).toUpperCase()) : prop;
     }
-    setValue(){
+   setValue(){
+       
         this.value = "";
         this.hover = "";
-        this._inputControllers.forEach(controller=> controller.hover ? this.hover+= " "+controller.HTMLElement.value+controller.unit : this.value+= " "+controller.HTMLElement.value+controller.unit);
+        this._inputControllers.forEach(controller=> {
+            controller.hover ? this.hover+= " "+controller.HTMLElement.value+controller.unit : this.value+= " "+controller.HTMLElement.value+controller.unit;
+        });
+        
+        if([...this._inputControllers[0].HTMLElement.parentElement.parentElement.classList].includes("hover-freeze")){
+            this.hover = this.value;
+        }
 
+        if([...this._inputControllers[0].HTMLElement.parentElement.parentElement.classList].includes("property-off")){
+           
+            this.value = "";
+            this.hover = "initial";
+    
+        }
            
         }
   
     injectValue(){
+        
         document.documentElement.style.setProperty(`--${this.name}${this.subfix}`,this.value);
         if(this.hover!==""){
             document.documentElement.style.setProperty(`--${this.name}-hover`,this.hover);
         }
+
     }
 }
 
