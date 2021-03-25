@@ -45,13 +45,15 @@ function selectText(containerClass) {
                 <div class="container scalex2">
                         <button class="button">Botón</button>
                     </div>
-
+                   
             </div>
   
             <div class="code-wrapper">
+                
                 <div class="code-wrapper-title"> <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000" onclick="selectText('html-code-container')"><rect fill="none" height="24" width="24"/>
                     <use href="#copy-icon-svg"></use>
                 </svg><h2>HTML</h2></div>
+                
                 <div class="html-code-container">
                     <div><span class="html-symbol">&lt;</span><span class="html-tag">div </span><span class="html-attr">class</span>=<span class="html-class">"<span class="namespace-place"></span>container"</span><span class="html-symbol">&gt;</span></div>
                         <div>
@@ -75,16 +77,14 @@ function selectText(containerClass) {
            
         </div>
         
-            <!--   ######################################3    -->       
+  
         <div class="config-container">
             <div class="column">
-               <!--   ######################################3    -->
-                
+              
            
                 <p>General</p>
-                <div class="property-wrapper">
-                <div id="background-color-container" data-title="Background" data-type="color" class="selector-object selector"></div>
-                </div>
+
+                <div id="button-background-color"></div>
                 <div class="property-wrapper">
                     <div class="selector">
                         <label for="namespace-content-config">Namespace</label>
@@ -96,113 +96,40 @@ function selectText(containerClass) {
                     <label for="text-content-config">Text</label>
                     <input type="text" id="text-content-config" value="botón">
                 </div>
-                </div>    
+                </div>   
                 <p>Background</p>
        
-                <div class="background-color-wrapper property-wrapper">
-                    <div id="background-color" data-title="Color" data-type="color" class="selector-object selector"></div> 
-                 
-                </div>
-                
+                <div id="button-background-color"></div>
+
                 <p>Border</p>
-
-                <div class="border-radius-wrapper property-wrapper">
-                    <div id="border-radius" data-title="Radius" data-min="0" data-max="200" data-type="range" class="selector-object selector"></div>
-              
-                </div>
-                <div class="border-width-wrapper property-wrapper">
-                    <div id="border-width" data-title="Width"data-min="0" data-max="20" data-type="range" class="selector-object selector"></div>
-                  
-                </div>
-                <div class="border-color-wrapper property-wrapper">
-                    <div id="border-color" data-title="Color" data-type="color" class="selector-object selector"></div>
-                  
-                </div>
-                <div class="property-wrapper">
-                <div class="selector">
-                    <label for="border-style-config">Style</label>
-                    <select name="" id="border-style-config" size="1">
-                        <option value="solid">Solid</option>
-                        <option value="inset">Inset</option>
-                        <option value="outset">Outset</option>
-                        <option value="groove">Groove</option>
-                        <option value="ridge">Ridge</option>
-                        <option value="double" selected="selected">Double</option>
-                        <option value="dashed">Dashed</option>
-                        <option value="dotted">Dotted</option>
-                        <option value="hidden">Hidden</option>
-                        <option value="none">None</option>
-                    </select>
                 
-                </div>
-            </div>
+                
+                <div id="button-border-radius"></div>
+                <div id="button-border-width"></div>
+
+                <div id="button-border-color"></div>
+                <div id="button-border-style"></div>
 
 
-
-
-
-
-
-
-
-
-
-
-                <!--   ######################################3    -->
+     
             </div>  
             <div class="column">
-                <!--   ######################################3    -->
-
+                
                 
                 <p>Padding</p>
-                <div class="padding-wrapper property-wrapper">
-                    <div id="padding-x" data-bind="padding" data-title="X Direction" data-min="0" data-max="200" data-type="range" class="selector-object selector" data-order="1"></div>
-                 
+                <div id="button-padding"></div>
 
-                    <div id="padding-y" data-bind="padding" data-title="Y Direction" data-min="0" data-max="200" data-type="range" class="selector-object selector" data-order="0"></div>
-                  
-                </div>
-                
-                
-              
-                   
-                
                 <p>Text</p>
-                <div class="color-wrapper property-wrapper">
-                    <div id="color"  data-title="Color" data-type="color" class="selector-object selector"></div>
-                    
-                </div>
-                <div class="font-size-wrapper property-wrapper">
-                    <div id="font-size" data-title="Size" data-min="12" data-max="72" data-type="range" class="selector-object selector"></div>
-                    
-                </div>
-                <div class="property-wrapper">
-                <div class="selector">
-                    <label for="text-transform-config">Transform</label>
-                    <select name="" id="text-transform-config">
-                        <option value="none">None</option>
-                        <option value="uppercase" selected="selected">Uppercase</option>
-                        <option value="lowercase">Lowercase</option>
-                        <option value="capitalize">Capitalize</option>
-                        <option value="initial">Initial</option>
-                        <option value="inherit">Inherit</option>
-                    </select>
-                    
-                </div>
-                </div>
-                <p>Box-Shadow</p>
-            <div class="box-shadow-wrapper property-wrapper">
-                <div id="shadow-x" data-bind="box-shadow" data-title="X" data-min="-20" data-max="20" data-type="range" class="selector-object selector" data-order="0"></div>
-                <div id="shadow-y" data-bind="box-shadow" data-title="Y" data-min="-20" data-max="20" data-type="range" class="selector-object selector" data-order="1"></div>
-                <div id="shadow-blur" data-bind="box-shadow" data-title="Blur"  data-min="0" data-max="40" data-type="range" class="selector-object selector" data-order="2"></div>
-                <div id="shadow-spread" data-bind="box-shadow" data-title="Spread"  data-min="0" data-max="40" data-type="range" class="selector-object selector" data-order="3"></div>
-                <div id="shadow-color" data-bind="box-shadow" data-title="Color" data-type="color" class="selector-object selector" data-order="4"></div>
+                <div id="button-color"></div>
+                <div id="button-font-size"></div>
+                <div id="button-text-transform"></div>
                 
-            </div>
+                <p>Box-Shadow</p>
+                <div id="button-box-shadow"></div>
 
-
-                <input type="text" value="pointer" id="cursor-config" style="display: none;">
-                <input type="text" value="1s" id="transition-config" style="display: none;">
+                <div id="button-transition"></div>
+                <div id="button-cursor"></div>
+  
             
 
 
@@ -222,10 +149,9 @@ function selectText(containerClass) {
                         <path d="M18,2H9C7.9,2,7,2.9,7,4v12c0,1.1,0.9,2,2,2h9c1.1,0,2-0.9,2-2V4C20,2.9,19.1,2,18,2z M18,16H9V4h9V16z M3,15v-2h2v2H3z M3,9.5h2v2H3V9.5z M10,20h2v2h-2V20z M3,18.5v-2h2v2H3z M5,22c-1.1,0-2-0.9-2-2h2V22z M8.5,22h-2v-2h2V22z M13.5,22L13.5,22l0-2h2 v0C15.5,21.1,14.6,22,13.5,22z M5,6L5,6l0,2H3v0C3,6.9,3.9,6,5,6z"/>
                     </symbol>
                  </svg>
-                <!--   ######################################3    -->
+
             </div>
         </div>
-        <!--   ######################################3    -->
 
 
 

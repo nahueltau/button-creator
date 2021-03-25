@@ -6,11 +6,11 @@
        --border-radius: initial;
        --border-width: initial;
        --border-color: initial;
-       --border-style: double;
+       --border-style: initial;
        --padding: initial;
        --color: initial;
        --font-size: initial;
-       --text-transform: uppercase;
+       --text-transform: initial;
        --box-shadow: initial;
         
         
@@ -34,15 +34,8 @@ body{
     margin: 0;
     font-family: sans-serif;
 }
-input{
-    max-width: 9vw;
-}
-label{
-    user-select: none;
-}
-use{
-    pointer-events: none;
-}
+/* STRUCTURE */
+/* GENERAL */
 .app-container{
     background-color: rgb(255, 255, 255);
     width: 100%;
@@ -57,9 +50,6 @@ use{
     height: 100vh;
 }
 .config-container{
-/*     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 1rem; */
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -71,6 +61,9 @@ use{
 .column{
     width: 45%;
 }
+
+/* BUTTON PREVIEW */
+/* GENERAL */
 .viewport{
 
     overflow: hidden;
@@ -89,6 +82,7 @@ use{
     transform: scale(2);
 }
 
+/* BUTTON PREVIEW */
 /*SCALE CONTROL*/
 .scale-control{
     position: absolute;
@@ -96,6 +90,7 @@ use{
     font-size: 24px;
     z-index: 2;
     top: 0;
+    background-color: var(--main-color);
     right: 0;
     padding: 1rem;
     user-select: none;
@@ -108,11 +103,11 @@ use{
     cursor: pointer;
 }
 .scale-control span:first-child{
-    box-shadow: 0 0 0 2px cornflowerblue;
+    box-shadow: 0 0 0 2px white;
     cursor: default;
 }
 .zoomed .scale-control span:last-child{
-    box-shadow: 0 0 0 2px cornflowerblue;
+    box-shadow: 0 0 0 2px white;
     cursor: default;
 }
 .zoomed .scale-control span:first-child{
@@ -120,11 +115,11 @@ use{
     cursor: pointer;
 }
 .scale-control span:hover{
-    box-shadow: 0 0 0 2px cornflowerblue;
+    box-shadow: 0 0 0 2px white;
 }
 
-
-/*CODE VIEWS*/
+/*CODE VIEWER*/
+/*GENERAL*/
 .code-wrapper{
     background-color: rgb(45, 45, 45);
     color: white;
@@ -148,7 +143,17 @@ use{
     justify-content: flex-end;
     position: relative;
 }
-
+.css-code-container,.html-code-container{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    box-sizing: border-box;
+}
+/*CODE VIEWER*/
+/*COPY TO CLIPBOARD BUTTON*/
+use{
+    pointer-events: none;
+}
 .tooltip::after{
     z-index: 200;
     content:"Copied to Clipboard";
@@ -178,12 +183,8 @@ opacity: 0;
     cursor: pointer;
 
 }
-.css-code-container,.html-code-container{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 2rem;
-    box-sizing: border-box;
-}
+
+/*CODE VIEWER*/
 /*CSS VIEW FORMAT*/
 .css-bracket,.css-semicolon{
     color: white;
@@ -198,6 +199,7 @@ opacity: 0;
 .css-value{
     color:lightgreen;
 }
+/*CODE VIEWER*/
 /*HTML VIEW FORMAT*/
 .html-code-container div{
     padding: 0 0 0 2rem;
@@ -216,6 +218,7 @@ opacity: 0;
 }
 
 /*INPUT PANEL*/
+/*GENERAL*/
 .config-container p{
     margin: 0;
     padding: 1rem;
@@ -228,27 +231,8 @@ opacity: 0;
     margin-bottom: 1rem;
    
 }
-.selector{
-    position: relative;
-    padding: .8rem 2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-.selector div{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-}
-
-
-.config-container label{
-    padding-right: .5rem;
-    font-size: .8rem;
-}
-
+/*PROPERTY CARDS*/
+/*GENERAL*/
 .property-wrapper{
     display: flex;
     flex-direction: column;
@@ -263,11 +247,32 @@ opacity: 0;
 .property-wrapper:hover{
     box-shadow: inset 8px 0 0 rgb(0, 0, 0);
 }
+.selector{
+    position: relative;
+    padding: .8rem 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.selector label{
+    padding-right: .5rem;
+    font-size: .8rem;
+    user-select: none;
+}
+.selector input{
+    max-width: 9vw;
+}
+/*PROPERTY CARDS*/
 /* PROPERTY DISABLED */
 .property-off{
     padding: 0;
 }
 .property-off input{
+    display: none;
+
+}
+.property-off select{
     display: none;
 
 }
@@ -293,6 +298,7 @@ opacity: 0;
 .property-off .remove-property-button:hover{
     color: var(--main-color);
 }
+/*PROPERTY CARDS*/
 /*HOVER*/
 .hover-container{
    margin-top: -1.7rem;
@@ -320,6 +326,16 @@ opacity: 0;
     pointer-events: none;
     opacity: .2;
 }
+/*PROPERTY CARDS*/
+/*HIDE*/
+.transition-card,.cursor-card{
+    display: none;
+}
+#hover-background-color-container{
+    display: none;
+}
+
+
 /*BUTTON*/
 .button{
      background-color: var(--background-color);
@@ -349,7 +365,3 @@ opacity: 0;
 
 
 
-    /*BANDAID*/
-    #hover-background-color-container{
-        display: none;
-    }
