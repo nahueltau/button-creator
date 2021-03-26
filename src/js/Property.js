@@ -2,7 +2,7 @@ import createPropertyCard from "./createPropertyCard.js";
 
 class Property{
     static stylesTemplates = {};
-
+    static all = [];
     constructor(prop,[...controllers],{selector="button",subfix="",canHover=true}={}){
         this.name = prop;
         this.subfix = subfix;
@@ -11,7 +11,9 @@ class Property{
         this.inputControllers = [...controllers]
         this.propertyCard = createPropertyCard(this.name, this.inputControllers,this.canHover);;
         this.addOnInputEvents();
-        this.pupulateData(0);
+        this.pupulateData(3);
+        this.populate =  this.pupulateData;
+        Property.all.push(this);
     }
     addOnInputEvents(){
             //input update values events
@@ -28,14 +30,21 @@ class Property{
                 //populate input data
                 let buttons = Property.stylesTemplates;
                 let value;
-                value = buttons[index][this.name+this.subfix].trim();
-                let arrayValue = value.split(" ");
+                let arrayValue = [""]
+                //in prop exists
+                if(buttons[index][this.selector]["main"][this.name]){
+                   value = buttons[index][this.selector]["main"][this.name].trim();
+                   arrayValue = value.split(" ");
+                }
                 let hover;
                 let arrayHover = [""]
                 //check if hover is available
-                if(buttons[index][this.name+this.subfix+"-hover"]){
-                    hover = buttons[index][this.name+this.subfix+"-hover"].trim();
-                    arrayHover = hover.split(" ");
+                if(buttons[index][this.selector]["hover"]){
+                    if(buttons[index][this.selector]["hover"][this.name]){
+                        hover = buttons[index][this.selector]["hover"][this.name].trim();
+                        arrayHover = hover.split(" ");
+                    }
+
 
                 }
 
@@ -44,7 +53,10 @@ class Property{
                     let value = arrayValue[index];
                     value =  value.replace(/px/,"");
                     let hover = arrayHover[index];
-                    hover =  hover.replace(/px/,"");
+                    if(hover){
+                       hover =  hover.replace(/px/,""); 
+                    }
+                    
 
                     //set value on input
                     controller.inputElement.children[1].value=value;

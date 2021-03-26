@@ -27,6 +27,7 @@ class Input extends Controller {
         /* label.setAttribute("for",this.name+this.subfix+"-config") */
         label.innerText = this.title;
         inputContainer.appendChild(label)
+
          //create input
         let input = document.createElement("input");
         /* input.id = this.name+this.subfix+"-config"; */
@@ -43,10 +44,12 @@ class Input extends Controller {
         //create hover container
         let hoverContainer = inputContainer.cloneNode([true]);
         hoverContainer.classList.add("hover-container");
+
         //hover label
         let hoverLabel = hoverContainer.children[0];
         hoverLabel.innerText = "";
         hoverLabel.removeAttribute("for");
+        
         //hover input
         let hoverInput = hoverContainer.children[1];
        /*  hoverInput.id = "hover-"+this.name+this.subfix+"-config"; */

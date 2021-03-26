@@ -24,6 +24,50 @@ fetch("./styles.json")
 
     showCSScode();
     showHTMLcode();
+
+    
+    //TEMPLATES
+    let templates = document.querySelector(".templates")
+    buttons.forEach((selector,index)=>{
+       let cont = document.createElement("div")
+       cont.id = "template-"+index;
+       let style = document.createElement("style");
+       cont.appendChild(style);
+
+      //CONTAINER
+       style.innerText+="#template-"+index+"{"
+       for(let rule in selector.container.main){
+           style.innerText+=rule+":"+selector.container.main[rule]+";"
+       }
+       style.innerText+="}"
+      //BUTTON
+       style.innerText+="#template-"+index+" button"+"{"
+       for(let rule in selector.button.main){
+           style.innerText+=rule+":"+selector.button.main[rule]+";"
+       }
+       style.innerText+="}"
+       //HOVER
+       style.innerText+="#template-"+index+" button:hover"+"{"
+       for(let rule in selector.button.hover){
+           style.innerText+=rule+":"+selector.button.hover[rule]+";"
+       }
+       style.innerText+="}"
+
+       let but = document.createElement("button")
+
+       but.addEventListener("click",()=>{
+        document.querySelectorAll(".property-off").forEach(el=>el.classList.remove("property-off"))
+        document.querySelectorAll(".hover-freeze").forEach(el=>el.classList.remove("hover-freeze"))
+           Property.all.forEach(prop=>{
+               prop.populate(index)
+           })
+           
+           
+       })
+       cont.appendChild(but);
+       but.innerText = "Extra";
+       templates.appendChild(cont);
+    })
 })
 
 
