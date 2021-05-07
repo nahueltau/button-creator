@@ -181,13 +181,11 @@ opacity: 0;
     text-align: end;
     margin: 0 2rem;
 }
-.code-wrapper-title svg{
-    fill: white;
+.code-wrapper-title img{
     cursor: pointer;
-
 }
-.code-wrapper-title svg:active{
-    fill: var(--main-color);
+.code-wrapper-title img:active{
+    filter: opacity(55%);
     cursor: pointer;
 
 }
