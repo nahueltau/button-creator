@@ -3,7 +3,7 @@ import showCSScode from "./showCSScode.js";
 import initProps from "./initProps.js";
 import textAndNamespace from "./textAndNamespace.js";
 import Property from "./Property.js";
-
+import {buttons} from "/styles.json"
 //ZOOM
 let toggleZoom = _=>{document.querySelector(".viewport").classList.toggle("zoomed")}
 [...document.querySelector(".scale-control").children].forEach(child=>child.addEventListener("click",toggleZoom))
@@ -12,9 +12,7 @@ let toggleZoom = _=>{document.querySelector(".viewport").classList.toggle("zoome
 textAndNamespace();
 
 //STYLE PROPS
-fetch("./styles.json")
-.then(response=>response.json())
-.then(({buttons})=>{
+
     Property.stylesTemplates = buttons;
     initProps(Property);
     //SHOW CODE
@@ -68,7 +66,7 @@ fetch("./styles.json")
        but.innerText = "Extra";
        templates.appendChild(cont);
     })
-})
+
 
 
 
