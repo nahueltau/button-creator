@@ -8,34 +8,12 @@
     <link rel="stylesheet" href="./css/main.css">
 
     <style id="main" class="stylesheet-view"></style>
-    <script>
 
-function selectText(containerClass) {
-    if(document.querySelector(".tooltip")===null){
-    if (window.getSelection) {
 
-        let range = document.createRange();
-        range.selectNode(document.querySelector("."+containerClass));
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        
-        document.execCommand('copy');
-        range.selectNode(document.querySelector("svg"));
+
+
+
  
-    }
-    let e = event;
-    event.target.parentElement.classList.add("tooltip");
-    setTimeout(()=>{
-        document.querySelector(".tooltip").classList.add("tooltip-fade");}
-        ,700)
-    setTimeout(()=>{
-        document.querySelector(".tooltip").classList.remove("tooltip","tooltip-fade")}
-        ,1000)
-}}
-
-
-
-    </script>
 </head>
 <body>
     <div class="app-container">
@@ -50,7 +28,7 @@ function selectText(containerClass) {
   
             <div class="code-wrapper">
                 
-                <div class="code-wrapper-title"><img onclick="selectText('html-code-container')" src="./assets/copy.svg"/><h2>HTML</h2></div>
+                <div class="code-wrapper-title"><img class="html-select-icon"src="./assets/copy.svg"/><h2>HTML</h2></div>
                 
                 <div class="html-code-container">
                     <div><span class="html-symbol">&lt;</span><span class="html-tag">div </span><span class="html-attr">class</span>=<span class="html-class">"<span class="namespace-place"></span>container"</span><span class="html-symbol">&gt;</span></div>
@@ -64,7 +42,7 @@ function selectText(containerClass) {
                     <div><span class="html-symbol">&lt;/</span><span class="html-tag">div</span><span class="html-symbol">&gt;</span></div>
                 </div>
                 <div class="code-wrapper-title"> 
-                <img onclick="selectText('css-code-container')" src="./assets/copy.svg"/>
+                <img class="css-select-icon"src="./assets/copy.svg"/>
                 <h2>CSS</h2></div>
                         
                             <div class="css-code-container">
@@ -144,8 +122,9 @@ function selectText(containerClass) {
 
     </div>    
     </div>
-
+    <svg></svg>
 
 </body>
 <script src="./js/main.js"></script>
+<script src="./js/selectText.js"></script>
 </html>
