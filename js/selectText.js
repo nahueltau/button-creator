@@ -8,7 +8,7 @@ function selectText(containerClass,event) {
         window.getSelection().addRange(range);
         
         document.execCommand('copy');
-        range.selectNode(document.querySelector("svg"));
+        range.selectNode(document.querySelector("i"));
  
     }
     let e = event;
